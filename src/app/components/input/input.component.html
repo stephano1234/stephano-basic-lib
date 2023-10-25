@@ -1,0 +1,13 @@
+<sbld-doc-panel [code]="code">
+  <div class="example-container">
+    <pre>Input: </pre>
+    <sbl-input>
+      <input
+        sblInput
+        [(ngModel)]="value"
+        required
+      >
+    </sbl-input>
+    <pre> value: {{ value | json }}</pre>
+  </div>
+</sbld-doc-panel>

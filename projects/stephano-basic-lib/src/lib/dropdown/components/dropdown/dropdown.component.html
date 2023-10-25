@@ -1,0 +1,52 @@
+<sbl-input
+  (focusout)="onInputFocusout($event)"
+>
+  <input
+    sblInput
+    [containerControl]="control"
+    type="text"
+    [formControl]="form"
+    [placeholder]="placeholder"
+    (beforeinput)="onBeforeInput($event)"
+  />
+  <sbl-icon
+    *ngIf="!disableClearButton && chosenValue"
+    icon="cancel"
+    rightIcon
+    (click)="onClearOptionClick()"
+  ></sbl-icon>
+  <sbl-icon
+    [@opened]="{
+      value: isOpen,
+      params: { openingDuration },
+    }"
+    icon="chevron-down"
+    rightIcon
+    (click)="onArrowClick()"
+  ></sbl-icon>
+</sbl-input>
+<cdk-virtual-scroll-viewport
+  sblDropdownContainer
+  #dropdownContainer="sblDropdownContainer"
+  [data]="(data$ | async)!"
+  [chosenData]="chosenValue"
+  (optionClick)="onOptionClick($event)"
+  (emptyContainerClick)="onEmptyContainerClick()"
+  [itemSize]="itemHeight"
+  [style.height.px]="currentHeight"
+  [style.transitionDuration.ms]="openingDuration"
+>
+  <sbl-dropdown-option
+    *cdkVirtualFor="
+      let element of dropdownContainer.data;
+      let i = index;
+      trackBy: dropdownContainer.trackDataByValue;
+    "
+    [style.height.px]="itemHeight"
+    [value]="element.value"
+    [display]="element.display"
+    [isEmpty]="element.empty"
+    [isChosen]="element.value | equals:dropdownContainer.chosenData"
+    (click)="dropdownContainer.onOptionClick(element, i)"
+  ></sbl-dropdown-option>
+</cdk-virtual-scroll-viewport>

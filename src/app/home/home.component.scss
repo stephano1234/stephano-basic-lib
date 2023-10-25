@@ -1,0 +1,10 @@
+@import 'colors';
+@import 'variables';
+
+:host {
+  padding: $padding;
+}
+
+h2 {
+  margin: 0;
+}

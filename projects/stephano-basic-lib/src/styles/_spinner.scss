@@ -1,0 +1,92 @@
+@import 'colors';
+@import 'variables';
+
+sbl-spinner {
+  position: relative;
+  animation: spin 1s linear infinite;
+
+  .half-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+
+    .clip {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      left: 0%;
+      overflow: hidden;
+    }
+
+    &.first {
+      .clip {
+        top: 0%;
+      }
+
+      svg {
+        top: 0%;
+        animation: first-half-spin 4s ease-in-out infinite;
+      }
+    }
+
+    &.second {
+      .clip {
+        bottom: 0%;
+      }
+
+      svg {
+        bottom: 0%;
+        animation: second-half-spin 4s ease-in-out infinite;
+      }
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: 0%;
+
+    circle {
+      stroke-dashoffset: 0px;
+    }
+  }
+}
+
+@keyframes first-half-spin {
+  0% {
+    transform: rotate(20deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes second-half-spin {
+  0% {
+    transform: rotate(160deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(160deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

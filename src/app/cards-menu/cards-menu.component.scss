@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'variables';
+
+.doc-container {
+  display: grid;
+  padding: $padding*2;
+  gap: $padding*2;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+  cursor: pointer;
+  height: fit-content;
+  padding: $padding;
+  color: $gray-700;
+  border-width: $borderWidth;
+  border-style: solid;
+  border-color: $gray-700;
+  border-radius: $borderRadius;
+  background-color: $white;
+  font-size: $fontSize*1.5;
+  text-align: center;
+
+  &:hover {
+    box-shadow: $borderWidth $borderWidth $gray-600;
+  }
+}

@@ -1,0 +1,17 @@
+@import 'colors';
+
+::-webkit-scrollbar {
+  width: $scrollBarWidth;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $gray-300;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $gray-600;
+
+  &:hover {
+    background-color: $gray-800;
+  }
+}

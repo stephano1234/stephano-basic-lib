@@ -1,0 +1,8 @@
+<div class="top-buttons" routerLink="../">
+  <sbl-icon icon="arrow-left"></sbl-icon>
+  <span>Back</span>
+</div>
+<div class="demo-panel">
+  <ng-content></ng-content>
+</div>
+<pre [ngClass]="backgroundColor" [innerHTML]="code | highlightCode:language"></pre>

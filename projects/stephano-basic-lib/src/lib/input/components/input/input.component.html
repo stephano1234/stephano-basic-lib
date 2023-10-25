@@ -1,0 +1,19 @@
+<ng-content select="input[sblInput]"></ng-content>
+<sbl-spinner
+  *ngIf="loading"
+  [size]="inputElementComputedHeight"
+></sbl-spinner>
+<ng-content select="sbl-icon[rightIcon]"></ng-content>
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="cdkOverlayOrigin"
+  [cdkConnectedOverlayOpen]="!!control?.errors && !!control?.touched && showErrors"
+  [cdkConnectedOverlayPositions]="positions"
+  [cdkConnectedOverlayHasBackdrop]="false"
+>
+  <div class="errors-container">
+    <div *ngFor="let error of control?.errors | keyvalue">
+      {{ error | errorMessaging }}
+    </div>
+  </div>
+</ng-template>

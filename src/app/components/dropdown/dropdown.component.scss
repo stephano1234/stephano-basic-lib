@@ -1,0 +1,17 @@
+@import 'colors';
+@import 'variables';
+
+.example-container {
+  display: flex;
+  column-gap: $padding;
+  padding: $padding;
+  align-items: center;
+
+  sbl-dropdown {
+    flex: .5;
+  }
+}
+
+pre {
+  margin: 0;
+}

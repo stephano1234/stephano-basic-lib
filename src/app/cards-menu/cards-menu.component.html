@@ -1,0 +1,9 @@
+<div class="doc-container">
+  <div
+    *ngFor="let card of cards$ | async"
+    class="card"
+    (click)="open(card.path)"
+  >
+    {{ card.title }}
+  </div>
+</div>

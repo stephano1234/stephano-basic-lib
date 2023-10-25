@@ -1,0 +1,13 @@
+@import 'colors';
+@import 'variables';
+
+.example-container {
+  display: flex;
+  align-items: center;
+  column-gap: $padding;
+  padding: $padding;
+}
+
+pre {
+  margin: 0;
+}

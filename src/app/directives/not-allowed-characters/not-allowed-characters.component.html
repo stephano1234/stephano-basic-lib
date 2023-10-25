@@ -1,0 +1,13 @@
+<sbld-doc-panel [code]="code">
+  <div class="example-container">
+    <div>Input:</div>
+    <sbl-input>
+      <input
+        sblInput
+        notAllowedCharacters="aeiou0123456789"
+        [(ngModel)]="value"
+        required
+      >
+    </sbl-input>
+  </div>
+</sbld-doc-panel>

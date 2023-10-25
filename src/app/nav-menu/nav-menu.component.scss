@@ -1,0 +1,38 @@
+@import 'colors';
+@import 'variables';
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.side-nav-menu {
+  font-size: $fontSize*1.5;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: $padding*2;
+  color: $white;
+  background-color: $blue-600;
+
+  div {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: $padding;
+
+    &.selected {
+      color: $purple-900;
+    }
+
+    &:hover {
+      background-color: $blue-500;
+    }
+
+    span {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

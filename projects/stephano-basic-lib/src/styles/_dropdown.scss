@@ -1,0 +1,124 @@
+@import 'colors';
+@import 'variables';
+
+sbl-dropdown {
+  display: inline-block;
+  position: relative;
+  height: fit-content;
+
+  sbl-input {
+    width: 100%;
+  }
+
+  & sbl-input:has(input[sblInput].ng-valid.ng-touched) {
+    border-color: $gray-700;
+  }
+
+  &.ng-valid.ng-touched sbl-input:has(input[sblInput]) {
+    border-color: $green-500;
+  }
+
+  &.ng-invalid.ng-touched sbl-input:has(input[sblInput]) {
+    border-color: $red-600;
+  }
+
+  [sblDropdownContainer] {
+    transition-property: height;
+    transition-timing-function: linear;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $white;
+    border-width: 0px;
+    border-style: solid;
+    border-color: $gray-700;
+    font-size: $fontSize;
+    color: $gray-800;
+
+    sbl-dropdown-option {
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      word-break: keep-all;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      padding-left: $padding;
+      padding-right: $padding;
+      border-radius: $borderRadius;
+
+      &:hover:not(.chosen) {
+        background-color: $gray-300;
+      }
+
+      &.focused {
+        border: 1px dashed $gray-800;
+      }
+
+      &.chosen {
+        background-color: $green-300;
+      }
+
+      &.empty {
+        cursor: auto;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &.bottom-drop {
+    sbl-input {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    [sblDropdownContainer] {
+      border-width: $borderWidth;
+      border-top-width: 0px;
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    [sblDropdownContainer] {
+      overflow-y: hidden;
+      border-color: $gray-500;
+      background-color: $gray-300;
+      color: $gray-500;
+
+      sbl-dropdown-option {
+        pointer-events: none;
+
+        &.chosen {
+          background-color: $gray-400;
+        }
+      }
+    }
+  }
+
+  &.opening-closing {
+
+    [sblDropdownContainer] {
+      overflow-y: hidden;
+
+      sbl-dropdown-option {
+        pointer-events: none;
+      }
+    }
+  }
+
+  &:not([autocomplete]) {
+    input {
+      caret-color: transparent;
+    }
+  }
+}

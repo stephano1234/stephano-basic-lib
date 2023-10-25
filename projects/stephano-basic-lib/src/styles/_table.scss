@@ -1,0 +1,40 @@
+@import 'colors';
+@import 'variables';
+
+table[sblTable] {
+  font-size: $fontSize;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-width: $borderWidth;
+  border-style: solid;
+  border-color: $gray-800;
+  border-top-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadius;
+
+  tr[sblRow] td {
+    border-top-width: $borderWidth;
+    border-top-style: solid;
+    border-top-color: $gray-800;
+    padding: $padding;
+  }
+
+  tr[sblHeader] th {
+    padding: $padding;
+    text-align: left;
+    background-color: $blue-800;
+    color: $white;
+
+    &:first-of-type {
+      border-top-left-radius: $borderRadius - $borderWidth*1.5;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: $borderRadius - $borderWidth*1.5;
+    }
+  }
+
+  tr[sblRow]:hover {
+    background-color: $gray-300;
+  }
+}

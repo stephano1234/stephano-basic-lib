@@ -1,0 +1,9 @@
+@import 'colors';
+@import 'variables';
+
+.example-container {
+  display: flex;
+  align-items: center;
+  column-gap: $padding*2;
+  padding: $padding;
+}
