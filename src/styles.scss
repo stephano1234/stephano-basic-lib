@@ -1,5 +1,14 @@
+@import 'colors';
 @import 'styles/base';
 
 sbld-nav-menu>*:last-child {
   flex: 1;
+}
+
+a {
+  color: $blue-600;
+
+  &:visited {
+    color: $purple-900;
+  }
 }
