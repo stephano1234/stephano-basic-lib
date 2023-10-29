@@ -15,7 +15,7 @@ export class MaskComponent {
   protected readonly code = `<sbl-input>
   <input
     sblInput
-    sblMask="--*  J4 , : "
+    mask="(  ) / /  .  -  "
     [(ngModel)]="value"
     required
   >
