@@ -9,7 +9,8 @@
     "test": "ng test",
     "watch-lib": "ng build stephano-basic-lib --watch",
     "prebuild-lib": "node ./src/scripts/generate-styles-from-tokens.js",
-    "build-lib": "ng build stephano-basic-lib"
+    "build-lib": "ng build stephano-basic-lib",
+    "githubpages-build": "ng build && if [ -e docs ]; then rm -r -f docs; fi && mkdir docs && cp -r dist/stephano-basic-lib-doc/* docs/"
   },
   "private": true,
   "dependencies": {
