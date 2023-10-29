@@ -6,8 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "test": "ng test",
     "watch-lib": "ng build stephano-basic-lib --watch",
-    "test": "ng test"
+    "prebuild-lib": "node ./src/scripts/generate-styles-from-tokens.js",
+    "build-lib": "ng build stephano-basic-lib"
   },
   "private": true,
   "dependencies": {

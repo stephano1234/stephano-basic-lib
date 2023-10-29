@@ -1,11 +1,11 @@
 const fs = require('fs').promises;
 function successLog() {
   console.log(`
-    ╔═════════════════════════════════════════════╗
-    ║   Stylesheets created:                      ║
-    ║                                             ║
-    ║   ->  /src/assets/styles/colors.scss        ║
-    ╚═════════════════════════════════════════════╝
+    ╔══════════════════════════════════════════════════════════════════╗
+    ║   Stylesheets created:                                           ║
+    ║                                                                  ║
+    ║   ->  projects/stephano-basic-lib/src/styles/_colors.scss        ║
+    ╚══════════════════════════════════════════════════════════════════╝
   `);
 }
 async function createDesignTokens() {
@@ -22,6 +22,6 @@ async function createDesignTokens() {
     }, '');
     return acc + lines;
   }, '');
-  fs.writeFile('src/assets/styles/colors.scss', colorsStyleContent, 'utf-8');
+  fs.writeFile('projects/stephano-basic-lib/src/styles/_colors.scss', colorsStyleContent, 'utf-8');
 }
 createDesignTokens().then(successLog).catch(console.error);

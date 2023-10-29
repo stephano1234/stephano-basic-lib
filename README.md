@@ -7,5 +7,5 @@ This library aims to provide any front end project with the basic components nee
 ## Description
 This is a basic Angular library with some of the components that usually appear in front end projects. The most common are dropdowns, inputs and tables. The only library used on this project was Angular CDK itself.
 ***
-### See the result at:
-[http://localhost:4200/](http://localhost:4200/)
+### See the project at:
+[https://stephano1234.github.io/stephano-basic-lib](https://stephano1234.github.io/stephano-basic-lib)
