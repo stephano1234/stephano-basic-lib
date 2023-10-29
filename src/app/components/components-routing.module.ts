@@ -55,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'pagination',
-    title: TitleUtils.getSelectedComponentTitle('Input'),
+    title: TitleUtils.getSelectedComponentTitle('Pagination'),
     loadComponent: () => import('./pagination/pagination.component')
       .then(m => m.PaginationComponent)
   },
