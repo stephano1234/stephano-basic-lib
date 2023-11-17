@@ -10,6 +10,10 @@ const cardRouteData: CardsRouteData = {
       path: 'mask'
     },
     {
+      title: 'Bottom Scroll',
+      path: 'bottom-scroll'
+    },
+    {
       title: 'Allowed Pattern',
       path: 'allowed-pattern'
     },
@@ -33,25 +37,31 @@ const routes: Routes = [
   },
   {
     path: 'mask',
-    title: TitleUtils.getSelectedComponentTitle('Mask'),
+    title: TitleUtils.getSelectedDirectiveTitle('Mask'),
     loadComponent: () => import('./mask/mask.component')
       .then(m => m.MaskComponent)
   },
   {
     path: 'allowed-pattern',
-    title: TitleUtils.getSelectedComponentTitle('Allowed Pattern'),
+    title: TitleUtils.getSelectedDirectiveTitle('Allowed Pattern'),
     loadComponent: () => import('./allowed-pattern/allowed-pattern.component')
       .then(m => m.AllowedPatternComponent)
   },
   {
+    path: 'bottom-scroll',
+    title: TitleUtils.getSelectedDirectiveTitle('Bottom Scroll'),
+    loadComponent: () => import('./bottom-scroll/bottom-scroll.component')
+      .then(m => m.BottomScrollComponent)
+  },
+  {
     path: 'not-allowed-characters',
-    title: TitleUtils.getSelectedComponentTitle('Not Allowed Characters'),
+    title: TitleUtils.getSelectedDirectiveTitle('Not Allowed Characters'),
     loadComponent: () => import('./not-allowed-characters/not-allowed-characters.component')
       .then(m => m.NotAllowedCharactersComponent)
   },
   {
     path: 'table',
-    title: TitleUtils.getSelectedComponentTitle('Table'),
+    title: TitleUtils.getSelectedDirectiveTitle('Table'),
     loadComponent: () => import('./table/table.component')
       .then(m => m.TableComponent)
   },

@@ -11,14 +11,18 @@ import { mask } from './mask';
 import { pagination } from './pagination';
 import { spinner } from './spinner';
 import { shared } from './shared';
+import { modal } from './modal';
+import { bottomScroll } from './bottom-scroll';
 
 const exports = [
   ...shared,
   ...spinner,
+  ...bottomScroll,
   ...dropdown,
   ...icon,
   ...input,
   ...mask,
+  ...modal,
   ...pagination,
   ...table,
 ];
@@ -42,10 +46,12 @@ const exports = [
 export class StephanoBasicLibModule { }
 
 export * from './shared';
+export * from './bottom-scroll';
 export * from './dropdown';
 export * from './icon';
 export * from './input';
 export * from './mask';
+export * from './modal';
 export * from './table';
 export * from './pagination';
 export * from './spinner';

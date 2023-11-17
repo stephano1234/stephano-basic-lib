@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./pipes/pipes.module').then(m => m.PipesModule)
   },
   {
+    path: 'services',
+    title: TitleUtils.getUnselectedServiceTitle(),
+    loadChildren: () => import('./services/services.module').then(m => m.ServicesModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
