@@ -6,8 +6,8 @@ import { TitleUtils } from '../utils/title.utils';
 const cardRouteData: CardsRouteData = {
   cards: [
     {
-      title: 'Get Property',
-      path: 'get-property'
+      title: 'Modal',
+      path: 'modal'
     }
   ]
 };
@@ -20,10 +20,10 @@ const routes: Routes = [
       .then(m => m.CardsMenuComponent)
   },
   {
-    path: 'get-property',
-    title: TitleUtils.getSelectedPipeTitle('Get Property'),
-    loadComponent: () => import('./get-property/get-property.component')
-      .then(m => m.GetPropertyComponent)
+    path: 'modal',
+    title: TitleUtils.getSelectedServiceTitle('Modal'),
+    loadComponent: () => import('./modal/modal.component')
+      .then(m => m.ModalComponent)
   },
   {
     path: '**',
@@ -35,4 +35,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PipesRoutingModule { }
+export class ServicesRoutingModule { }

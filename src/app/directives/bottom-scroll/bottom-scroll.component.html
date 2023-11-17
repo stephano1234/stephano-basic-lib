@@ -1,0 +1,13 @@
+<sbld-doc-panel [code]="code">
+  <div class="example-container">
+    <span>Bottom Scroll:</span>
+    <div
+      class="any-scrollable-container"
+      sblBottomScroll
+      [triggeringThresholdRatio]="0.85"
+      (bottomScrollEvent)="showAlert()"
+    >
+      <span *ngFor="let item of items">{{ item }}</span>
+    </div>
+  </div>
+</sbld-doc-panel>

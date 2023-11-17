@@ -1,27 +1,32 @@
 <sbld-doc-panel [code]="code">
   <div class="example-container">
-    <pre>Dropdown (fruit): </pre>
-    <sbl-dropdown
-      [(ngModel)]="value"
-      required
-      placeholder="Select one..."
-      [data]="[
-        { basket: { fruit: 'Apple', color: 'red' } },
-        { basket: { fruit: 'Blueberry', color: 'blue' } },
-        { basket: { fruit: 'Orange', color: 'orange' } },
-        { basket: { fruit: 'Lime', color: 'green' } },
-        { basket: { fruit: 'Banana', color: 'yellow' } }
-      ]"
-      valuePropertyPath="basket.color"
-      displayPropertyPath="basket.fruit"
-    ></sbl-dropdown>
-    <pre> value (color): </pre>
-    <sbl-input>
-      <input
-        sblInput
+    <div class="label-container">
+      <span>Dropdown (fruit):</span>
+      <sbl-dropdown
         [(ngModel)]="value"
-        [allowedStrings]="['red', 'blue', 'orange', 'green', 'yellow']"
-      >
-    </sbl-input>
+        required
+        autocomplete
+        placeholder="Select one..."
+        [data]="[
+          { basket: { fruit: 'Apple', color: 'red' } },
+          { basket: { fruit: 'Blueberry', color: 'blue' } },
+          { basket: { fruit: 'Orange', color: 'orange' } },
+          { basket: { fruit: 'Lime', color: 'green' } },
+          { basket: { fruit: 'Banana', color: 'yellow' } }
+        ]"
+        valuePropertyPath="basket.color"
+        displayPropertyPath="basket.fruit"
+      ></sbl-dropdown>
+    </div>
+    <div class="label-container">
+      <span>value (color):</span>
+      <sbl-input>
+        <input
+          sblInput
+          [(ngModel)]="value"
+          [allowedStrings]="['red', 'blue', 'orange', 'green', 'yellow']"
+        >
+      </sbl-input>
+    </div>
   </div>
 </sbld-doc-panel>

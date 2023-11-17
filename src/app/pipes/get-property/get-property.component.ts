@@ -12,7 +12,7 @@ import { SharedModule } from "src/app/shared/shared.module";
 })
 export class GetPropertyComponent {
 
-  protected readonly code = `{ bag: { money: 20, foods: ['sandwich', 'grapes', 'nuts'] } } | getProperty:'bag.foods.2'`;
+  protected readonly code = `<span>Value: {{ { bag: { money: 20, foods: ['sandwich', 'grapes', 'nuts'] } } | getProperty:'bag.foods.2' }}</span>`;
   protected value = {
     bag: {
       money: 20,

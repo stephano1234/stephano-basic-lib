@@ -30,4 +30,12 @@ export class TitleUtils {
     return `${TitleUtils.getUnselectedPipeTitle()}: ${pipe}`;
   }
 
+  public static getUnselectedServiceTitle(): string {
+    return `${TitleUtils.getTitle()}: Services`;
+  }
+
+  public static getSelectedServiceTitle(service: string): string {
+    return `${TitleUtils.getUnselectedServiceTitle()}: ${service}`;
+  }
+
 }

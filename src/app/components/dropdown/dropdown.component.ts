@@ -15,6 +15,7 @@ export class DropdownComponent {
   protected readonly code = `<sbl-dropdown
   [(ngModel)]="value"
   required
+  autocomplete
   placeholder="Select one..."
   [data]="[
     { basket: { fruit: 'Apple', color: 'red' } },

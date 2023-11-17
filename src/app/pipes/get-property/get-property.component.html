@@ -1,5 +1,5 @@
-<sbld-doc-panel [code]="code" language="javascript">
+<sbld-doc-panel [code]="code">
   <div class="example-container">
-    <div>Value in the view: {{ value | getProperty:'bag.foods.2' | json }}</div>
+    <span>Value: {{ value | getProperty:'bag.foods.2' }}</span>
   </div>
 </sbld-doc-panel>

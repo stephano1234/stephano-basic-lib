@@ -2,16 +2,19 @@
 @import 'variables';
 
 .example-container {
-  display: flex;
-  column-gap: $padding;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: $padding*2;
   padding: $padding;
   align-items: center;
 
-  sbl-dropdown {
-    flex: .5;
-  }
-}
+  .label-container {
+    display: flex;
+    column-gap: $padding;
+    align-items: center;
 
-pre {
-  margin: 0;
+    &>:last-child {
+      flex: 1;
+    }
+  }
 }
