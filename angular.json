@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "stephano-basic-lib-doc:build:production"
+              "buildTarget": "stephano-basic-lib-doc:build:production"
             },
             "development": {
-              "browserTarget": "stephano-basic-lib-doc:build:development"
+              "buildTarget": "stephano-basic-lib-doc:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stephano-basic-lib-doc:build"
+            "buildTarget": "stephano-basic-lib-doc:build"
           }
         },
         "test": {
