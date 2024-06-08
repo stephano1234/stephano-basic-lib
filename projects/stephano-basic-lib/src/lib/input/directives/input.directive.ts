@@ -1,7 +1,17 @@
-import { Directive, ElementRef, HostListener, Injector, Input, OnInit, inject } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from "@angular/forms";
-import { MaskDirective } from "../../mask";
-import { InputComponent } from "../components/input/input.component";
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Injector,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { MaskDirective } from '../../mask';
+import { InputComponent } from '../components/input/input.component';
 
 @Directive({
   selector: 'input[sblInput]',
@@ -13,7 +23,7 @@ import { InputComponent } from "../components/input/input.component";
     },
   ],
 })
-export class InputDirective implements ControlValueAccessor, OnInit {
+export class InputDirective implements ControlValueAccessor, OnInit, OnDestroy {
 
   @Input()
   public containerControl: NgControl | null = null;
@@ -24,14 +34,22 @@ export class InputDirective implements ControlValueAccessor, OnInit {
   private readonly inputComponent = inject(InputComponent, { host: true });
   private readonly maskDirective = inject(MaskDirective, { host: true, optional: true });
   private readonly injector = inject(Injector);
+  private statusChangesSub?: Subscription;
 
   public ngOnInit(): void {
     this.control = this.injector.get(NgControl, null, { self: true, optional: true });
     this.containerControl && (this.control = this.containerControl);
+    this.statusChangesSub = this.control?.statusChanges?.subscribe(() =>
+      this.inputComponent.cd.markForCheck()
+    );
     this.maskDirective && this.inputComponent.elRef.nativeElement.style.setProperty(
       this.maskDirective.maskPlaceholderProperty,
       this.maskDirective.maskPlaceholder,
     );
+  }
+
+  public ngOnDestroy(): void {
+    this.statusChangesSub?.unsubscribe();
   }
 
   @HostListener('input', ['$event.target.value'])

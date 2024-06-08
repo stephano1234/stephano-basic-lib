@@ -1,10 +1,14 @@
 @import 'colors';
 @import 'variables';
 
-:host {
+section {
   padding: $padding;
 }
 
 h2 {
   margin: 0;
+}
+
+a {
+  word-break: break-all;
 }

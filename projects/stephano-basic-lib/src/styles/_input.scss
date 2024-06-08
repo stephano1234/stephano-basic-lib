@@ -44,8 +44,8 @@ sbl-input {
 
   input {
     font-family: inherit;
-    width: inherit;
-    flex-grow: 1;
+    min-width: 0;
+    flex: 0 1 100%;
     padding: $padding;
     border: none;
     background-color: transparent;
@@ -82,6 +82,9 @@ sbl-input {
 }
 
 .errors-container {
+  position: absolute;
+  top: calc(100% + $borderWidth*2 + $borderWidthError);
+  left: 0;
   font-size: $fontSizeError;
   color: $red-700;
   display: flex;

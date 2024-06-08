@@ -3,18 +3,11 @@
 
 .example-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: $padding*2;
+  grid-template-columns: 1fr;
+  gap: $padding*2;
   padding: $padding;
-  align-items: center;
 
-  .label-container {
-    display: flex;
-    column-gap: $padding;
-    align-items: center;
-
-    &>:last-child {
-      flex: 1;
-    }
+  sbl-dropdown {
+    max-width: 200px;
   }
 }

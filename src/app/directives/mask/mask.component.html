@@ -1,6 +1,5 @@
 <sbld-doc-panel [code]="code">
   <div class="example-container">
-    <div>Input:</div>
     <sbl-input>
       <input
         sblInput
@@ -9,6 +8,6 @@
         required
       >
     </sbl-input>
-    <pre> value: {{ value | json }}</pre>
+    <span>Value: {{ value | json }}</span>
   </div>
 </sbld-doc-panel>

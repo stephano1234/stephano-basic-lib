@@ -2,12 +2,8 @@
 @import 'variables';
 
 .example-container {
-  display: flex;
-  align-items: center;
-  column-gap: $padding;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $padding*2;
   padding: $padding;
-}
-
-pre {
-  margin: 0;
 }

@@ -6,10 +6,6 @@ sbl-dropdown {
   position: relative;
   height: fit-content;
 
-  sbl-input {
-    width: 100%;
-  }
-
   & sbl-input:has(input[sblInput].ng-valid.ng-touched) {
     border-color: $gray-700;
   }

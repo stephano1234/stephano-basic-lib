@@ -2,9 +2,6 @@
 @import 'variables';
 
 .example-container {
-  display: flex;
-  flex-direction: column;
-  row-gap: $padding;
   padding: $padding;
 }
 

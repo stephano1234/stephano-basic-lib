@@ -14,8 +14,8 @@ export class AllowedStringDirective implements Validator {
   @Input({ required: true })
   public allowedStrings!: string[];
 
-  public validate(control: AbstractControl<string>): ValidationErrors | null {
-    return this.allowedStrings.includes(control.value) ? null : {
+  public validate({ value }: AbstractControl<string>): ValidationErrors | null {
+    return !value || this.allowedStrings.includes(value) ? null : {
       allowedStrings: `The allowed values for this field are ${this.allowedStrings.join(', ')}.`
     };
   }
