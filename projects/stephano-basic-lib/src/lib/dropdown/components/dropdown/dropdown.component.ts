@@ -59,6 +59,8 @@ import { AutocompleteDirective } from '../../directives/autocomplete.directive';
 export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
   @Input()
+  public displayError = true;
+  @Input()
   public disableClearButton = false;
   @Input()
   public closeOnSelect = true;
@@ -181,9 +183,14 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
 
   @HostListener('document:click', ['$event.target'])
   public onOutsideClick(target: HTMLElement): void {
-    if (!this.elRef.nativeElement.contains(target) && this.isOpen) {
-      this.isOpenSubject.next(false);
-      this.onTouched();
+    if (!this.elRef.nativeElement.contains(target)) {
+      if (this.isOpen) {
+        this.isOpenSubject.next(false);
+        this.onTouched();
+      }
+      if (this.form.touched) {
+        this.onTouched();
+      }
     }
   }
 
@@ -205,7 +212,6 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
       if (chosenData.value !== this.chosenValue) {
         this.selectOption(chosenData.value, chosenData.display);
         this.onChange(this.chosenValue);
-        this.input.cd.markForCheck();
         this.closeOnSelect && this.isOpenSubject.next(false);
       }
       this.onTouched();
@@ -219,16 +225,22 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
     queueMicrotask(() => {
       const chosenData = this.dropdownData.find(d => d.value === value);
       chosenData ? this.selectOption(chosenData.value, chosenData.display) : this.clearOption();
-      this.cd.markForCheck();
+      this.input.cd.markForCheck();
     });
   }
 
   public registerOnChange(fn: (value: NonNullable<unknown> | null) => void): void {
-    this.onChange = fn;
+    this.onChange = (value: NonNullable<unknown> | null) => {
+      fn(value);
+      this.input.cd.markForCheck();
+    };
   }
 
   public registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    this.onTouched = () => {
+      fn();
+      this.input.cd.markForCheck();
+    };
   }
 
   public setDisabledState(isDisabled: boolean): void {
@@ -242,8 +254,10 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
   }
 
   protected onInputFocusout(event: FocusEvent): void {
-    if (event.relatedTarget && this.isOpen) {
-      this.isOpenSubject.next(false);
+    if (event.relatedTarget) {
+      if (this.isOpen) {
+        this.isOpenSubject.next(false);
+      }
       this.onTouched();
     }
     this.updateInputValue();

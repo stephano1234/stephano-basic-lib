@@ -4,10 +4,17 @@
 .example-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $padding*2;
   padding: $padding;
 
+  span {
+    margin-bottom: $padding;
+  }
+
   sbl-dropdown {
+    max-width: 200px;
+  }
+
+  sbl-input {
     max-width: 200px;
   }
 }

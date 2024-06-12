@@ -19,6 +19,7 @@ import { Pagination } from "../../models/pagination.model";
       <sbl-dropdown
         [formControl]="itemsPerPageControl"
         [data]="pageOptions"
+        [displayError]="false"
         [disableClearButton]="true"
       ></sbl-dropdown>
     </div>

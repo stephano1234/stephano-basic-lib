@@ -63,6 +63,7 @@ export class InputDirective implements ControlValueAccessor, OnInit, OnDestroy {
   public writeValue(value: string | null): void {
     this.maskDirective && (value = this.maskDirective.processValue(value));
     this.inputElement.nativeElement.value = (value === undefined || value === null) ? '' : value;
+    this.inputComponent.cd.markForCheck();
   }
 
   public registerOnChange(fn: (value: string | null) => void): void {

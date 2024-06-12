@@ -20,6 +20,8 @@ import { InputDirective } from '../../directives/input.directive';
 })
 export class InputComponent implements OnInit {
 
+  @Input()
+  public displayError = true;
   public readonly elRef: ElementRef<HTMLInputElement> = inject(ElementRef);
   @Input()
   public loading = false;
@@ -46,9 +48,9 @@ export class InputComponent implements OnInit {
   Missing content: input tag with the sblInput attribute.
   Suggested solution:
 
-  <lib-input>
+  <sbl-input>
     <input sblInput/>
-  </lib-input>
+  </sbl-input>
       `);
     }
     this.inputElementComputedHeight = this.inputDirective.inputElement.nativeElement.clientHeight;

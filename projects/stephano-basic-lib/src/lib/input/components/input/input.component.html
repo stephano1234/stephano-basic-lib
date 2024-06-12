@@ -1,13 +1,38 @@
-<ng-content select="input[sblInput]"></ng-content>
-<sbl-spinner
-  *ngIf="loading"
-  [size]="inputElementComputedHeight">
-</sbl-spinner>
-<ng-content select="sbl-icon[rightIcon]"></ng-content>
 <div
-  *ngIf="control?.touched && control?.invalid"
-  class="errors-container">
+  [ngClass]="{
+    valid: control?.valid,
+    invalid: control?.invalid,
+    pending: control?.pending,
+    touched: control?.touched,
+    'display-error': displayError,
+  }"
+  class="input-container">
+  <ng-content select="input[sblInput]"></ng-content>
+  <sbl-spinner
+    *ngIf="loading"
+    [size]="inputElementComputedHeight">
+  </sbl-spinner>
+  <ng-content select="sbl-icon[rightIcon]"></ng-content>
+</div>
+<div
+  *ngIf="displayError"
+  class="error-container">
+  <div
+    *ngIf="control?.touched && control?.invalid"
+    class="error">
+    <sbl-icon
+      icon="circle-alert"
+      class="error-icon">
+    </sbl-icon>
+    <span
+      *ngFor="let error of control?.errors | keyvalue"
+      class="error-text">
+      {{ error | errorMessaging }}
+    </span>
+  </div>
+</div>
+<!-- <div class="error-tooltip-container">
   <div *ngFor="let error of control?.errors | keyvalue">
     {{ error | errorMessaging }}
   </div>
-</div>
+</div> -->

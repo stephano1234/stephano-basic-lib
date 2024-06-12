@@ -4,6 +4,5 @@
 .example-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $padding*2;
   padding: $padding;
 }
