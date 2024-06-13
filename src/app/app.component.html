@@ -1,4 +1,10 @@
 <div class="top-area">
   {{ document.title }}
 </div>
-<sbld-nav-menu></sbld-nav-menu>
+<sbld-nav-menu [items]="[
+  { name: 'Home', link: 'home' },
+  { name: 'Components', link: 'components' },
+  { name: 'Directives', link: 'directives' },
+  { name: 'Pipes', link: 'pipes' },
+  { name: 'Services', link: 'services' },
+]"></sbld-nav-menu>

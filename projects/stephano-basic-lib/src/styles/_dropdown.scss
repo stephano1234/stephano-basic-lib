@@ -6,20 +6,8 @@ sbl-dropdown {
   position: relative;
   height: fit-content;
 
-  sbl-input {
-    width: 100%;
-  }
-
-  & sbl-input:has(input[sblInput].ng-valid.ng-touched) {
-    border-color: $gray-700;
-  }
-
-  &.ng-valid.ng-touched sbl-input:has(input[sblInput]) {
-    border-color: $green-500;
-  }
-
-  &.ng-invalid.ng-touched sbl-input:has(input[sblInput]) {
-    border-color: $red-600;
+  &:has(.error-container) [sblDropdownContainer] {
+    top: calc(100% - $paddingError*2 - $iconSizeError);
   }
 
   [sblDropdownContainer] {
@@ -73,7 +61,7 @@ sbl-dropdown {
   }
 
   &.bottom-drop {
-    sbl-input {
+    sbl-input .input-container {
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
     }

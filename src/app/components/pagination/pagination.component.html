@@ -1,10 +1,9 @@
 <sbld-doc-panel [code]="code">
   <div class="example-container">
-    <div>Pagination: </div>
     <sbl-pagination
       [total]="20"
-      (paginationChange)="value = $event"
-    ></sbl-pagination>
-    <div>value: {{ value | json }}</div>
+      (paginationChange)="value = $event">
+    </sbl-pagination>
+    <span>Value: {{ value | json }}</span>
   </div>
 </sbld-doc-panel>

@@ -1,11 +1,12 @@
 @use 'sass:math';
 
-$fontSize: 14px;
+$scrollBarWidth: 1rem;
+$fontSize: 1rem;
 $padding: math.div($fontSize, 2);
-$borderRadius: 4px;
+$borderRadius: math.div($fontSize, 4);
 $iconSize: $fontSize+$padding*2-$borderRadius*2;
-$borderWidth: 2px;
-$borderWidthError: 1px;
-$scrollBarWidth: 16px;
-$fontSizeError: .75rem;
-$paddingError: .25rem;
+$borderWidth: math.div($fontSize, 8);
+$fontSizeError: math.div($fontSize, 4)*3;
+$iconSizeError: math.div($iconSize, 2);
+$paddingError: math.div($fontSize, 4);
+$borderWidthError: math.div($fontSize, 16);

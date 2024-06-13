@@ -1,38 +1,84 @@
 @import 'colors';
 @import 'variables';
 
+$menu-button-size: 2rem;
+
 :host {
+  position: relative;
   display: flex;
-  flex: 1;
 }
 
-.side-nav-menu {
+.backdrop {
+  background-color: $black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .25;
+  z-index: 2000;
+}
+
+.menu {
+  display: flex;
   font-size: $fontSize*1.5;
-  width: 200px;
+  background-color: $blue-600;
+  overflow: hidden;
+  height: 100%;
+  z-index: 2001;
+
+  &--handset {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0px 2px $gray-600;
+  }
+}
+
+.button-column {
+  cursor: pointer;
+  height: 100%;
+}
+
+.button {
+  width: $menu-button-size;
+  height: $menu-button-size;
+  color: $white;
+}
+
+.items {
   display: flex;
   flex-direction: column;
+  align-items: center;
   row-gap: $padding*2;
+}
+
+.item {
+  cursor: pointer;
+  width: 100%;
+  padding: $padding*2;
+  box-sizing: border-box;
+  text-align: center;
   color: $white;
-  background-color: $blue-600;
 
-  div {
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: $padding;
+  &.selected {
+    color: $purple-900;
+  }
 
-    &.selected {
-      color: $purple-900;
-    }
+  &:hover {
+    background-color: $blue-500;
+  }
+}
 
-    &:hover {
-      background-color: $blue-500;
-    }
+.container {
+  flex: 1;
+  overflow: auto;
 
-    span {
-      flex: 1;
-      text-align: center;
-    }
+  &--handset {
+    padding-left: $menu-button-size;
+  }
+
+  &--handset-open {
+    pointer-events: none;
   }
 }

@@ -23,11 +23,13 @@
 }
 
 .demo-panel {
+  width: fit-content;
   background-color: $gray-300;
   border-radius: $borderRadius;
 }
 
 pre {
+  width: fit-content;
   font-size: $fontSize*1.5;
   padding: $padding;
   margin: 0;

@@ -1,23 +1,40 @@
-<nav class="side-nav-menu">
-  <div routerLinkActive="selected" routerLink="home">
-    <span>Home</span>
-    <sbl-icon icon="chevron-right"></sbl-icon>
+<div
+  @backdrop
+  *ngIf="(isHandset$ | async) && isOpen"
+  (click)="isOpen = false"
+  class="backdrop">
+</div>
+
+<nav
+  [@opened]="!(isHandset$ | async) || isOpen"
+  [ngClass]="{ 'menu--handset': isHandset$ | async }"
+  class="menu">
+  <div class="items">
+    <div
+      *ngFor="let item of items"
+      routerLinkActive="selected"
+      [routerLink]="item.link"
+      class="item">
+      {{ item.name }}
+    </div>
   </div>
-  <div routerLinkActive="selected" routerLink="components">
-    <span>Components</span>
-    <sbl-icon icon="chevron-right"></sbl-icon>
-  </div>
-  <div routerLinkActive="selected" routerLink="directives">
-    <span>Directives</span>
-    <sbl-icon icon="chevron-right"></sbl-icon>
-  </div>
-  <div routerLinkActive="selected" routerLink="pipes">
-    <span>Pipes</span>
-    <sbl-icon icon="chevron-right"></sbl-icon>
-  </div>
-  <div routerLinkActive="selected" routerLink="services">
-    <span>Services</span>
-    <sbl-icon icon="chevron-right"></sbl-icon>
+
+  <div
+    *ngIf="isHandset$ | async"
+    (click)="isOpen = !isOpen"
+    class="button-column">
+    <sbl-icon
+      icon="menu"
+      class="button">
+    </sbl-icon>
   </div>
 </nav>
-<router-outlet></router-outlet>
+
+<div
+  [ngClass]="{
+    'container--handset': isHandset$ | async,
+    'container--handset-open': (isHandset$ | async) && isOpen,
+  }"
+  class="container">
+  <router-outlet></router-outlet>
+</div>
