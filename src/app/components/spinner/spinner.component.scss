@@ -2,6 +2,6 @@
 @import 'variables';
 
 .example-container {
-  display: flex;
   padding: $padding;
+  margin: $padding;
 }

@@ -11,7 +11,7 @@ export class AllowedPatternDirective {
     transform: (stringPattern: string): RegExp => {
       let regexPattern = new RegExp(/.*/);
       try {
-        regexPattern = new RegExp(stringPattern);
+        regexPattern = new RegExp(stringPattern, 'g');
       } catch {
         console.warn(`
   Directive: AllowedPatternDirective
@@ -24,14 +24,24 @@ export class AllowedPatternDirective {
     },
   })
   public pattern!: RegExp;
+  private lastValue!: string;
+  private selectionStart!: number;
+  private selectionEnd!: number;
 
   @HostListener('beforeinput', ['$event'])
+  public onBeforeInput(event: InputEvent): void {
+    const inputEl = event.target as HTMLInputElement;
+    this.lastValue = inputEl.value;
+    this.selectionStart = inputEl.selectionStart!;
+    this.selectionEnd = inputEl.selectionEnd!;
+  }
+
+  @HostListener('input', ['$event'])
   public onInput(event: InputEvent) {
-    if (event.data) {
-      const result = this.pattern.exec(event.data);
-      if (!result || result[0] !== result.input) {
-        event.preventDefault();
-      }
+    const inputEl = event.target as HTMLInputElement;
+    if (event.data && this.pattern.test(inputEl.value)) {
+      inputEl.value = this.lastValue;
+      inputEl.setSelectionRange(this.selectionStart, this.selectionEnd);
     }
   }
 

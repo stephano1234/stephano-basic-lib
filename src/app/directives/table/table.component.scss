@@ -3,4 +3,8 @@
 
 .example-container {
   padding: $padding;
+
+  pre {
+    margin: 0;
+  }
 }

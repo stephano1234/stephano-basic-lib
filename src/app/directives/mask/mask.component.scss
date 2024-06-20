@@ -5,4 +5,8 @@
   display: grid;
   grid-template-columns: 1fr;
   padding: $padding;
+
+  pre {
+    margin: 0;
+  }
 }

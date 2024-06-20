@@ -4,11 +4,11 @@
 >
   <input
     sblInput
+    [readOnly]="!this.canType"
     [containerControl]="control"
     type="text"
     [formControl]="form"
     [placeholder]="placeholder"
-    (beforeinput)="onBeforeInput($event)"
   />
   <sbl-icon
     *ngIf="!disableClearButton && chosenValue"

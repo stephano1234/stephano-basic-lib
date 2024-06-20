@@ -69,23 +69,20 @@ export class MaskDirective {
 
   @HostListener('beforeinput', ['$event'])
   public onBeforeInput(event: InputEvent): void {
-    // if (event.data === SPACE) return;
     const inputEl = event.target as HTMLInputElement;
-    let selectionStart = inputEl.selectionStart!;
-    let selectionEnd = inputEl.selectionEnd!;
-    if (selectionStart === selectionEnd) {
-      if (event.data || event.inputType === 'deleteContentForward') {
-        selectionStart = this.inputPositionMap[selectionStart]!;
-      } else if (event.inputType === 'deleteContentBackward') {
-        selectionStart = this.deleteBackwardPositionMap[selectionStart]!;
-      }
-      selectionEnd = selectionStart;
+    let selection =
+      inputEl.selectionDirection === 'forward' ? inputEl.selectionEnd! : inputEl.selectionStart!;
+    if (event.data || event.inputType === 'deleteContentForward') {
+      selection = this.inputPositionMap[selection]!;
+    } else if (event.inputType === 'deleteContentBackward') {
+      selection = this.deleteBackwardPositionMap[selection]!;
     }
+    const data = event.data?.slice(-1) ?? null;
     const inputResult = MaskUtils.getInputResult(
       inputEl.value,
-      selectionStart,
-      selectionEnd,
-      event.data,
+      selection,
+      selection,
+      data,
       event.inputType,
     );
     this.processedInput = this.processValue(inputResult.input)!;

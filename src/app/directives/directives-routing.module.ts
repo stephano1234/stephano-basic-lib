@@ -18,10 +18,6 @@ const cardRouteData: CardsRouteData = {
       path: 'allowed-pattern'
     },
     {
-      title: 'Not Allowed Characters',
-      path: 'not-allowed-characters'
-    },
-    {
       title: 'Table',
       path: 'table'
     }
@@ -52,12 +48,6 @@ const routes: Routes = [
     title: TitleUtils.getSelectedDirectiveTitle('Bottom Scroll'),
     loadComponent: () => import('./bottom-scroll/bottom-scroll.component')
       .then(m => m.BottomScrollComponent)
-  },
-  {
-    path: 'not-allowed-characters',
-    title: TitleUtils.getSelectedDirectiveTitle('Not Allowed Characters'),
-    loadComponent: () => import('./not-allowed-characters/not-allowed-characters.component')
-      .then(m => m.NotAllowedCharactersComponent)
   },
   {
     path: 'table',

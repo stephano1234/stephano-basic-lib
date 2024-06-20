@@ -7,7 +7,7 @@ import { SharedModule } from "src/app/shared/shared.module";
   styleUrls: ['./mask.component.scss'],
   standalone: true,
   imports: [
-    SharedModule
+    SharedModule,
   ]
 })
 export class MaskComponent {
@@ -17,8 +17,7 @@ export class MaskComponent {
     sblInput
     mask="(  ) / /  .  -  "
     [(ngModel)]="value"
-    required
-  >
+    required>
 </sbl-input>`;
   protected value: string | null = null;
 

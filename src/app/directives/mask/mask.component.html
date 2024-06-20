@@ -5,9 +5,8 @@
         sblInput
         mask="(  ) / /  .  -  "
         [(ngModel)]="value"
-        required
-      >
+        required>
     </sbl-input>
-    <span>Value: {{ value | json }}</span>
+    <pre>Value: {{ value | json }}</pre>
   </div>
 </sbld-doc-panel>

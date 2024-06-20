@@ -3,6 +3,8 @@
 @import 'variables';
 
 sbl-input {
+  --mask-placeholder: "";
+
   .input-container {
     position: relative;
     display: flex;
@@ -15,7 +17,6 @@ sbl-input {
     border-color: $gray-700;
     font-size: $fontSize;
     color: $gray-800;
-    --mask-placeholder: "";
 
     &:has(input[sblInput][mask])::after {
       content: var(--mask-placeholder);
