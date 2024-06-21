@@ -1,5 +1,7 @@
 import { Directive, HostListener, Input } from "@angular/core";
 
+const EMPTY = '';
+
 @Directive({
   selector: 'input[sblInput][allowedPattern]'
 })
@@ -39,9 +41,16 @@ export class AllowedPatternDirective {
   @HostListener('input', ['$event'])
   public onInput(event: InputEvent) {
     const inputEl = event.target as HTMLInputElement;
-    if (event.data && this.pattern.test(inputEl.value)) {
-      inputEl.value = this.lastValue;
-      inputEl.setSelectionRange(this.selectionStart, this.selectionEnd);
+    if (
+      event.inputType === 'insertText' ||
+      event.inputType === 'insertFromPaste' ||
+      event.inputType === 'insertCompositionText'
+    ) {
+      const capturedSize = inputEl.value.replaceAll(this.pattern, EMPTY).length;
+      if (capturedSize > 0) {
+        inputEl.value = this.lastValue;
+        inputEl.setSelectionRange(this.selectionStart, this.selectionEnd);
+      }
     }
   }
 

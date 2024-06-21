@@ -50,7 +50,19 @@ export class MaskDirective {
   })
   public dropMaskCharacters = false;
   public get value(): string | null {
-    return this.dropMaskCharacters ? this.unmaskedValue : this.maskedValue;
+    return this.dropMaskCharacters ?
+      this.unmaskedValue : this.maskedValue === this.mask ? EMPTY : this.maskedValue;
+  }
+
+  @HostListener('copy', ['$event'])
+  public onCopy(event: ClipboardEvent): void {
+    event.clipboardData?.setData('text/plain', this.value ?? EMPTY);
+    event.preventDefault();
+  }
+
+  @HostListener('paste', ['$event'])
+  public onPaste(event: ClipboardEvent): void {
+    event.preventDefault();
   }
 
   @HostListener('keydown', ['$event'])
@@ -98,7 +110,9 @@ export class MaskDirective {
 
   public processValue(unprocessedValue: string | null): string | null {
     if (unprocessedValue === null) return null;
-    this._unmaskedValue = unprocessedValue.replaceAll(SPACE, EMPTY);
+    this._unmaskedValue = unprocessedValue
+      .slice(0, this.maskChars.length)
+      .replaceAll(SPACE, EMPTY);
     const unmaskedValueChars = this.unmaskedValue!.split(EMPTY);
     const maskedValueChars = this.maskChars.slice();
     for (let i = 0; i < unmaskedValueChars.length; i++) {
