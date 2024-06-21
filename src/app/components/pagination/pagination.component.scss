@@ -2,8 +2,11 @@
 @import 'variables';
 
 .example-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $padding*2;
+  width: fit-content;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: $padding*2;
   padding: $padding;
 }

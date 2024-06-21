@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { MaskDirective } from '../../mask';
 import { InputComponent } from '../components/input/input.component';
 
 @Directive({
@@ -32,7 +31,6 @@ export class InputDirective implements ControlValueAccessor, OnInit, OnDestroy {
   public onTouched: () => void = () => { };
   public readonly inputElement: ElementRef<HTMLInputElement> = inject(ElementRef);
   private readonly inputComponent = inject(InputComponent, { host: true });
-  private readonly maskDirective = inject(MaskDirective, { host: true, optional: true });
   private readonly injector = inject(Injector);
   private statusChangesSub?: Subscription;
 
@@ -41,10 +39,6 @@ export class InputDirective implements ControlValueAccessor, OnInit, OnDestroy {
     this.containerControl && (this.control = this.containerControl);
     this.statusChangesSub = this.control?.statusChanges?.subscribe(() =>
       this.inputComponent.cd.markForCheck()
-    );
-    this.maskDirective && this.inputComponent.elRef.nativeElement.style.setProperty(
-      this.maskDirective.maskPlaceholderProperty,
-      this.maskDirective.maskPlaceholder,
     );
   }
 
@@ -55,13 +49,11 @@ export class InputDirective implements ControlValueAccessor, OnInit, OnDestroy {
   @HostListener('input', ['$event.target.value'])
   protected onInput(value: string): void {
     this.onTouched();
-    this.maskDirective && (value = this.maskDirective.value!);
     this.onChange(value);
     this.inputComponent.cd.markForCheck();
   }
 
   public writeValue(value: string | null): void {
-    this.maskDirective && (value = this.maskDirective.processValue(value));
     this.inputElement.nativeElement.value = (value === undefined || value === null) ? '' : value;
     this.inputComponent.cd.markForCheck();
   }

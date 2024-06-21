@@ -72,7 +72,7 @@ $menu-button-size: 2rem;
 
 .container {
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
 
   &--handset {
     padding-left: $menu-button-size;

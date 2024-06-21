@@ -31,7 +31,7 @@ export class NavMenu {
   @Input({ required: true })
   public items: { name: string, link: string }[] = [];
   protected isOpen = false;
-  protected isHandset$ = inject(BreakpointObserver).observe(Breakpoints.Handset).pipe(
+  protected readonly isHandset$ = inject(BreakpointObserver).observe(Breakpoints.Handset).pipe(
     map(result => result.matches),
     tap(matches => matches && (this.isOpen = false)),
   );

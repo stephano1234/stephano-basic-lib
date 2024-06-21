@@ -168,13 +168,13 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
     return this.form.value;
   };
   protected openingDuration = 400;
-  private autocomplete!: AutocompleteDirective | null;
+  protected canType = false;
   private readonly getPropertyPipe = inject(GetPropertyPipe);
   private readonly cd = inject(ChangeDetectorRef);
 
   public ngOnInit(): void {
     this.control = this.injector.get(NgControl, null, { self: true, optional: true });
-    this.autocomplete = this.injector.get(AutocompleteDirective, null, { self: true, optional: true });
+    this.canType = !!this.injector.get(AutocompleteDirective, null, { self: true, optional: true });
   }
 
   public ngOnDestroy(): void {
@@ -247,10 +247,6 @@ export class DropdownComponent implements ControlValueAccessor, OnInit, OnDestro
     this.isDisabled = isDisabled;
     this.isDisabled && this.isOpenSubject.next(false);
     this.isDisabled ? this.form.disable() : this.form.enable();
-  }
-
-  protected onBeforeInput(event: InputEvent) {
-    !this.autocomplete && event.preventDefault();
   }
 
   protected onInputFocusout(event: FocusEvent): void {

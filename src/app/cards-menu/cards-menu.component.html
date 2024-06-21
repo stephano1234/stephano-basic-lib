@@ -1,4 +1,6 @@
-<div class="doc-container">
+<div
+  [ngClass]="{ 'doc-container--handset': isHandset$ | async }"
+  class="doc-container">
   <div
     *ngFor="let card of cards$ | async"
     class="card"

@@ -42,7 +42,7 @@ export class TableComponent {
     <td>{{ record.col1Value }}</td>
     <td>{{ record.col2Value }}</td>
     <td>{{ record.col3Value }}</td>
-    <td>{{ record.col4Value | json }}</td>
+    <td><pre>{{ record.col4Value | json }}</pre></td>
     <td>{{ record.col5Value }}</td>
     <td>{{ record.col6Value }}</td>
   </tr>

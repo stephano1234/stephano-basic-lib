@@ -103,10 +103,4 @@ sbl-dropdown {
       }
     }
   }
-
-  &:not([autocomplete]) {
-    input {
-      caret-color: transparent;
-    }
-  }
 }

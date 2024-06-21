@@ -2,6 +2,7 @@
 @import 'variables';
 
 sbl-spinner {
+  display: block;
   position: relative;
   animation: spin 1s linear infinite;
 

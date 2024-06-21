@@ -14,6 +14,7 @@
       *ngFor="let item of items"
       routerLinkActive="selected"
       [routerLink]="item.link"
+      (click)="isOpen = false"
       class="item">
       {{ item.name }}
     </div>

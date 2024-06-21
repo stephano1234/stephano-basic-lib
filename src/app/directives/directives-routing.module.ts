@@ -6,20 +6,12 @@ import { TitleUtils } from '../utils/title.utils';
 const cardRouteData: CardsRouteData = {
   cards: [
     {
-      title: 'Mask',
-      path: 'mask'
-    },
-    {
       title: 'Bottom Scroll',
       path: 'bottom-scroll'
     },
     {
       title: 'Allowed Pattern',
       path: 'allowed-pattern'
-    },
-    {
-      title: 'Not Allowed Characters',
-      path: 'not-allowed-characters'
     },
     {
       title: 'Table',
@@ -36,12 +28,6 @@ const routes: Routes = [
       .then(m => m.CardsMenuComponent)
   },
   {
-    path: 'mask',
-    title: TitleUtils.getSelectedDirectiveTitle('Mask'),
-    loadComponent: () => import('./mask/mask.component')
-      .then(m => m.MaskComponent)
-  },
-  {
     path: 'allowed-pattern',
     title: TitleUtils.getSelectedDirectiveTitle('Allowed Pattern'),
     loadComponent: () => import('./allowed-pattern/allowed-pattern.component')
@@ -52,12 +38,6 @@ const routes: Routes = [
     title: TitleUtils.getSelectedDirectiveTitle('Bottom Scroll'),
     loadComponent: () => import('./bottom-scroll/bottom-scroll.component')
       .then(m => m.BottomScrollComponent)
-  },
-  {
-    path: 'not-allowed-characters',
-    title: TitleUtils.getSelectedDirectiveTitle('Not Allowed Characters'),
-    loadComponent: () => import('./not-allowed-characters/not-allowed-characters.component')
-      .then(m => m.NotAllowedCharactersComponent)
   },
   {
     path: 'table',

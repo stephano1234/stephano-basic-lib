@@ -2,10 +2,23 @@
 @import 'variables';
 
 :host {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: $padding;
   row-gap: $padding;
+
+  ::-webkit-scrollbar {
+    height: $padding;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: $borderRadius;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: $borderRadius;
+  }
 }
 
 .top-buttons {
@@ -24,12 +37,17 @@
 
 .demo-panel {
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
   background-color: $gray-300;
   border-radius: $borderRadius;
 }
 
 pre {
   width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
   font-size: $fontSize*1.5;
   padding: $padding;
   margin: 0;
