@@ -7,7 +7,6 @@ import { table } from './table';
 import { dropdown } from './dropdown';
 import { icon } from './icon';
 import { input } from './input';
-import { mask } from './mask';
 import { pagination } from './pagination';
 import { spinner } from './spinner';
 import { shared } from './shared';
@@ -21,7 +20,6 @@ const exports = [
   ...dropdown,
   ...icon,
   ...input,
-  ...mask,
   ...modal,
   ...pagination,
   ...table,
@@ -50,7 +48,6 @@ export * from './bottom-scroll';
 export * from './dropdown';
 export * from './icon';
 export * from './input';
-export * from './mask';
 export * from './modal';
 export * from './table';
 export * from './pagination';

@@ -6,10 +6,6 @@ import { TitleUtils } from '../utils/title.utils';
 const cardRouteData: CardsRouteData = {
   cards: [
     {
-      title: 'Mask',
-      path: 'mask'
-    },
-    {
       title: 'Bottom Scroll',
       path: 'bottom-scroll'
     },
@@ -30,12 +26,6 @@ const routes: Routes = [
     data: cardRouteData,
     loadComponent: () => import('../cards-menu/cards-menu.component')
       .then(m => m.CardsMenuComponent)
-  },
-  {
-    path: 'mask',
-    title: TitleUtils.getSelectedDirectiveTitle('Mask'),
-    loadComponent: () => import('./mask/mask.component')
-      .then(m => m.MaskComponent)
   },
   {
     path: 'allowed-pattern',
